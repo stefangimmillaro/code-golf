@@ -205,6 +205,9 @@ func play(ctx context.Context, holeID, langID, code string, score *Scorecard) {
 		cmd.Args = []string{"/usr/bin/tcc", "-run", "-"}
 	case "c-sharp", "f-sharp":
 		cmd.Args = []string{"/compiler/Compiler", "-"}
+	case "clojure":
+		cmd.Args = []string{"/usr/local/bin/clojure", "-M", "-Srepro", "-"}
+		cmd.Env = []string{"JAVA_HOME=/opt/java/openjdk", "PATH=/bin:/usr/bin"}
 	case "crystal":
 		cmd.Args = []string{"/usr/bin/crystal", "run", "--stdin-filename", "code.cr", "--"}
 		cmd.Env = []string{"CRYSTAL_CACHE_DIR=/tmp", "PATH=/usr/bin:/bin"}
