@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+[ "$1" = "--version" ] && exec /usr/bin/gleam --version
+
+cd /tmp
+cp -r /gleam/. .
+mkdir src
+
+cat - > src/main.gleam
+
+shift
+exec /usr/bin/gleam run "$@"

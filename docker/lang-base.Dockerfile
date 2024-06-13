@@ -4,7 +4,8 @@ WORKDIR /scratch
 
 RUN mkdir dev etc tmp
 
-RUN echo nobody:x:99:99::/: > etc/passwd
+RUN echo nobody:x:65534:          > etc/group
+RUN echo nobody:x:65534:65534::/: > etc/passwd
 
 FROM scratch AS lang-base-no-proc
 

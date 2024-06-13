@@ -21,7 +21,7 @@ import (
 	hungarianAlgorithm "github.com/oddg/hungarian-algorithm"
 )
 
-var timeout = 5 * time.Second
+var timeout = 50 * time.Second
 
 // Increase the timeout under e2e as the hardware is less powerful than live.
 func init() {
@@ -368,6 +368,8 @@ func play(
 		cmd.Args = []string{"/usr/bin/fish", "--no-prng", "-c", code, "-u"}
 	case "forth":
 		cmd.Args = []string{"/usr/bin/forth", "/proc/self/fd/0"}
+	case "gleam":
+		cmd.Args = []string{"/usr/bin/gleamwrapper", "-"}
 	case "golfscript":
 		cmd.Args = []string{"/usr/bin/golfscript", "-n", "-e", code}
 		if hole.ID == "quine" {
